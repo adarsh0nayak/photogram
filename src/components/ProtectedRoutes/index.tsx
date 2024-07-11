@@ -1,12 +1,18 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
+import {useAuthState} from 'react-firebase-hooks/auth';
+import { getAuth } from "firebase/auth";
 
-export interface IProtectedRoutesProps {}
-
-export function ProtectedRoutes(props: IProtectedRoutesProps) {
-  const isAuth: boolean = false;
+export function ProtectedRoutes() {
+  const auth = getAuth();
+  const [user, loading] = useAuthState(auth);
   const location = useLocation();
-  return isAuth ? (
-    <Outlet/>
+  
+  if(loading){
+    return <div>...Loading</div>
+  }
+  
+  return user ? (
+    <Outlet />
   ) : (
     <Navigate to={"/login"} state={{ from: location }} />
   );

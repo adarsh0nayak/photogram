@@ -44,5 +44,9 @@ export const routes = createBrowserRouter([
     path: "/signup",
     element: <SignUp />,
     errorElement: <Error />,
-  },
+  },{
+    path: "*",
+    element: <div>Not Found</div>,
+    errorElement: <Error/>
+  }
 ]);

@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, User } from "firebase/auth";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { auth } from "../firebaseConfig";
 
 interface IUserAuthProviderProps {
@@ -15,7 +15,12 @@ type AuthContextData = {
 };
 
 const logIn = function(email: string, password: string){
-    return signInWithEmailAndPassword(auth, email, password);
+    try{
+        let data = signInWithEmailAndPassword(auth, email, password);
+        return data;
+    }catch(error: any){
+        console.log(error.message);
+    }
 }
 
 const signUp = function(email: string, password: string){
@@ -39,13 +44,13 @@ export const userAuthContext = createContext<AuthContextData>({
     googleSignIn
 });
 
-export const userAuthProvider : React.FunctionComponent<IUserAuthProviderProps> = ({children}) => {
+export const UserAuthProvider : React.FunctionComponent<IUserAuthProviderProps> = ({children}) => {
     const [user, setUser] = useState<User | null>(null);
-
+    
     useEffect(() => {
         const subscribe = onAuthStateChanged(auth, (user) => {
             if(user){
-                console.log(`User logged in is: ${user}`);
+                console.log(`User logged in is: ${user.email}`);
                 setUser(user);
             }else{
                 console.log(`User logged out`);
@@ -56,7 +61,7 @@ export const userAuthProvider : React.FunctionComponent<IUserAuthProviderProps> 
         return () => {
             subscribe();
         }
-    });
+    }, []);
 
     let value: AuthContextData = {
         user,
