@@ -34,8 +34,7 @@ export function Login() {
     try {
       console.log(`user info is ${JSON.stringify(user)}`);
       logIn(user.email, user.password);
-      console.log("here");
-      navigate("/");
+      navigate("/home");
     } catch (error: any) {
       console.log(error.message);
     }

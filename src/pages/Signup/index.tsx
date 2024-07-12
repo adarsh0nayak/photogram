@@ -34,6 +34,7 @@ export function SignUp() {
     try {
       console.log(`user info is ${JSON.stringify(user)}`);
       signUp(user.email, user.password);
+      navigate('/home');
     } catch (error: any) {
       console.log(error);
     }

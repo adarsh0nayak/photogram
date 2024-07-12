@@ -14,9 +14,9 @@ type AuthContextData = {
     googleSignIn: typeof googleSignIn;
 };
 
-const logIn = function(email: string, password: string){
+const logIn = async function(email: string, password: string){
     try{
-        let data = signInWithEmailAndPassword(auth, email, password);
+        let data = await signInWithEmailAndPassword(auth, email, password);
         return data;
     }catch(error: any){
         console.log(error.message);
