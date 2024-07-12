@@ -1,6 +1,7 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import {useAuthState} from 'react-firebase-hooks/auth';
 import { getAuth } from "firebase/auth";
+import { Layout } from "../layout";
 
 export function ProtectedRoutes() {
   const auth = getAuth();
@@ -12,7 +13,7 @@ export function ProtectedRoutes() {
   }
   
   return user ? (
-    <Outlet />
+    <Layout><Outlet/></Layout>
   ) : (
     <Navigate to={"/login"} state={{ from: location }} />
   );

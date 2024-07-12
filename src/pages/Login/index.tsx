@@ -46,7 +46,7 @@ export function Login() {
     try {
       await googleSignIn();
       console.log("logged in using google");
-      navigate("/");
+      navigate("/home");
     } catch (error: any) {
       console.log(error.message);
     }

@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, User } from "firebase/auth";
-import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { auth } from "../firebaseConfig";
 
 interface IUserAuthProviderProps {
@@ -46,7 +46,7 @@ export const userAuthContext = createContext<AuthContextData>({
 
 export const UserAuthProvider : React.FunctionComponent<IUserAuthProviderProps> = ({children}) => {
     const [user, setUser] = useState<User | null>(null);
-    
+
     useEffect(() => {
         const subscribe = onAuthStateChanged(auth, (user) => {
             if(user){
@@ -63,13 +63,13 @@ export const UserAuthProvider : React.FunctionComponent<IUserAuthProviderProps> 
         }
     }, []);
 
-    let value: AuthContextData = {
+    let value: AuthContextData = useMemo(() => ({
         user,
         logIn,
         logOut,
         signUp, 
         googleSignIn
-    };
+    }), []);
     return <userAuthContext.Provider value={value}>
         {children}
     </userAuthContext.Provider>
