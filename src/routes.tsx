@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Error } from "./pages/Error";
 import { Post } from "./pages/Post";
@@ -13,6 +13,10 @@ export const routes = createBrowserRouter([
     path: "/",
     element: <ProtectedRoutes />,
     children: [
+      {
+        path: '/',
+        element: <Navigate to={'/home'} replace/>
+      },
       {
         path: "/home",
         element: <Home />,
