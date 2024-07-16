@@ -69,7 +69,7 @@ export const UserAuthProvider : React.FunctionComponent<IUserAuthProviderProps> 
         logOut,
         signUp, 
         googleSignIn
-    }), []);
+    }), [user]);
     return <userAuthContext.Provider value={value}>
         {children}
     </userAuthContext.Provider>
