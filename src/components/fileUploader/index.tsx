@@ -12,7 +12,7 @@ interface IFileUploaderProps {
 export function FileUploader ({fileEntry, onChange}: IFileUploaderProps) {
     
     const handleChange = (items: OutputCollectionState<OutputCollectionStatus>) => {
-        onChange({files: [...items.allEntries.filter((file) => file.status === 'success').map(file => file)]});
+        onChange({files: [...items.allEntries.filter((file) => file.status === 'success')]});
     };
     
     const handleRemoveClick = useCallback((uuid: string) => {

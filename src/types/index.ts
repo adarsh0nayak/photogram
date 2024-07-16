@@ -28,3 +28,7 @@ export interface PhotoMeta {
 export interface FileEntry {
   files: OutputFileEntry[];
 }
+
+export interface  DocumentResponse extends Post{
+  id: string;
+}
