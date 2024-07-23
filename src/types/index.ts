@@ -15,7 +15,7 @@ export interface Post {
   caption: string;
   photos: PhotoMeta[];
   likes: number;
-  userLikes: [];
+  userLikes: string[];
   userId: string | null;
   date: Date;
 }
