@@ -71,7 +71,7 @@ export function Post() {
               <Label className="mb-4" htmlFor="photos">
                 Photos
               </Label>
-              <FileUploader fileEntry={fileEntry} onChange={setFileEntry} />
+              <FileUploader fileEntry={fileEntry} onChange={setFileEntry} preview={true}/>
             </div>
             <Button className="mt-8 w-32" type="submit">
               Submit

@@ -20,7 +20,6 @@ export const Home: React.FunctionComponent = () => {
   const [data, setData] = useState<DocumentResponse[]>(initialData);
   const getAllPosts = async() => {
     const response : DocumentResponse[] = await getPosts() || [];
-    console.log(response);
     setData(response);
   };
 

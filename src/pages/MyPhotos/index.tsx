@@ -4,7 +4,7 @@ import { useUserAuth } from "../../context/userAuthContext";
 import { getPostByUserId } from "../../repository/post.service";
 import { HeartIcon } from "lucide-react";
 
-export const MyPhotos:React.FunctionComponent<void> = () => {
+export const MyPhotos:React.FunctionComponent<{}> = () => {
   const [data, setData] = useState<DocumentResponse[]>([]);
   const {user} = useUserAuth();
 
@@ -20,7 +20,6 @@ export const MyPhotos:React.FunctionComponent<void> = () => {
             id: doc.id,
             ...data
           };
-          console.log(`response is ${JSON.stringify(responseObj)}`);
           tempArr.push(responseObj);
         });
         setData(tempArr);
@@ -44,7 +43,7 @@ export const MyPhotos:React.FunctionComponent<void> = () => {
           <div className="hidden text-white group-hover:block">{item.likes} likes</div>
         </div>
       </div>
-      <img src={`${item.photos[0].cdnUrl}/-/progressive/yes/-/scale_crop/300x300/center/`}/>
+      <img src={`${item.photos[0].cdnUrl}/-/progressive/yes/-/scale_crop/300x300/center/`} alt="post"/>
     </div>));
   };
 

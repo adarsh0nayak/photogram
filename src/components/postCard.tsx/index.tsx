@@ -27,7 +27,7 @@ const PostCard: React.FunctionComponent<IPostCardProps> = (props) => {
             data.userLikes?.splice(data.userLikes.indexOf(user?.uid as string), 1);
         }
 
-        await updateLikesOnPost(data.id, data.userLikes, isVal ? likesInfo.likes + 1 : likesInfo.likes - 1);
+        updateLikesOnPost(data.id, data.userLikes, isVal ? likesInfo.likes + 1 : likesInfo.likes - 1);
     };
 
     return <Card className='mb-6'>
