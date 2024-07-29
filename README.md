@@ -28,3 +28,45 @@ export default {
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+<br>
+<br>
+<br>
+
+# Deployment 
+
+- Install firebase tools
+
+``` 
+  npm i -g firebase-tools
+``` 
+
+- Log into firebase CLI
+```
+  firebase login
+```
+
+- Initialize firebase 
+
+```
+  firebase init
+```
+
+- Create build
+
+```
+  npm run build
+```
+
+- Deploy the build
+
+```
+  firebase deploy --only hosting 
+```
+
+# Disable Hosting
+
+- To disable hosting
+
+```
+  firebase hosting:disable
+```
