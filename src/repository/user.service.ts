@@ -39,3 +39,20 @@ export const updateUserProfile = (id: string, user: UserProfile) => {
     const docRef = doc(db, COLLECTION_NAME, id);
     return updateDoc(docRef, {...user});
 } 
+
+export const getAllUsers = async (userId: string) => {
+    try{
+        const q = query(collection(db, COLLECTION_NAME), where("userId", "!=", userId));
+        let querySnapshot = await getDocs(q);
+        let users: ProfileResponse[] = [];
+        if(querySnapshot.size){
+            querySnapshot.forEach(document => {
+                let doc = document.data() as UserProfile
+                users.push({id: document.id, ...doc});
+            });
+        }
+        return users;
+    }catch(error){
+        console.log(error);
+    }    
+}
