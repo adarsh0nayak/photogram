@@ -35,7 +35,7 @@ export interface  DocumentResponse extends Post{
 }
 
 export interface ProfileInfo {
-  user: User
+  user: User | null
   displayName: string | null | undefined
   photoUrl: string | null | undefined
 }

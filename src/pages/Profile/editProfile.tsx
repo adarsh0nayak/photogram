@@ -8,6 +8,7 @@ import avatar from '../../assets/images/image1.jpg';
 import { Button } from '../../components/ui/button';
 import { Input } from '../../components/ui/input';
 import { createUserProfile, updateUserProfile } from '../../repository/user.service';
+import { useUserAuth } from '../../context/userAuthContext';
 
 interface IEditProfileProps {
 }
@@ -17,7 +18,8 @@ export const EditProfile: React.FunctionComponent<IEditProfileProps> = () => {
     const {id, userId, userBio, displayName, photoUrl} = location.state as ProfileResponse;
     const [fileEntry, setFileEntry] = React.useState<FileEntry>({ files: [] });
     const [data, setData] = React.useState<ProfileResponse>({id, userBio, displayName, photoUrl, userId});
-    
+    const {user, updateProfileInfo} = useUserAuth();
+
     const updateProfile = async(e: React.MouseEvent<HTMLFormElement>) => {
         e.preventDefault();
         try{
@@ -28,6 +30,7 @@ export const EditProfile: React.FunctionComponent<IEditProfileProps> = () => {
                 const response = await createUserProfile(data);
                 console.log('The created user profile is: ', response);
             }
+            updateProfileInfo({user, displayName, photoUrl});
             navigate('/profile');
         }catch(error){
             console.log(error);
