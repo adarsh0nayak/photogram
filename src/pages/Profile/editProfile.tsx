@@ -2,13 +2,14 @@ import { Label } from '@radix-ui/react-label';
 import * as React from 'react';
 import { Textarea } from '../../components/ui/textarea';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { FileEntry, ProfileResponse } from '../../types';
+import { FileEntry, ProfileInfo, ProfileResponse } from '../../types';
 import { FileUploader } from '../../components/fileUploader';
 import avatar from '../../assets/images/image1.jpg';
 import { Button } from '../../components/ui/button';
 import { Input } from '../../components/ui/input';
 import { createUserProfile, updateUserProfile } from '../../repository/user.service';
 import { useUserAuth } from '../../context/userAuthContext';
+import { updateUserInfoOnPosts } from '../../repository/post.service';
 
 interface IEditProfileProps {
 }
@@ -30,7 +31,11 @@ export const EditProfile: React.FunctionComponent<IEditProfileProps> = () => {
                 const response = await createUserProfile(data);
                 console.log('The created user profile is: ', response);
             }
-            updateProfileInfo({user, displayName, photoUrl});
+            const profileData : ProfileInfo = {
+              user, displayName, photoUrl
+            };
+            await updateProfileInfo(profileData);
+            await updateUserInfoOnPosts(profileData);
             navigate('/profile');
         }catch(error){
             console.log(error);
