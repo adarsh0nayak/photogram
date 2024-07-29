@@ -14,6 +14,8 @@ const initialPost: PostType = {
   date: new Date(),
   likes: 0,
   userLikes: [],
+  username: null,
+  photoUrl: null,
   userId: null,
 };
 
@@ -36,7 +38,10 @@ export function Post() {
         ...post,
         photos: photoMeta,
         userId: user?.uid as string,
+        username: user?.displayName as string,
+        photoUrl: user?.photoURL as string
       };
+
       createPost(newPost);
       setPost(initialPost);
       navigate('/');

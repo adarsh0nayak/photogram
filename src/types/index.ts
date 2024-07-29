@@ -18,6 +18,8 @@ export interface Post {
   likes: number;
   userLikes: string[];
   userId: string | null;
+  username: string | null;
+  photoUrl?: string | null;
   date: Date;
 }
 

@@ -34,9 +34,9 @@ const PostCard: React.FunctionComponent<IPostCardProps> = (props) => {
         <CardHeader className='flex flex-col p-3'>
             <CardTitle className='text-sm text-center flex justify-start items-center'>
                 <span className='mr-2'>
-                    <img src={image1} className='w-10 h-10 rounded-full border-2 border-slate-800' alt={data.id}/>
+                    <img src={data.photoUrl? data.photoUrl : image1} className='w-10 h-10 rounded-full border-2 border-slate-800' alt={data.id}/>
                 </span>
-                <span>Guest User</span>
+                <span>{data.username}</span>
             </CardTitle>
             <CardContent className='p-0'>
                 <img src={data?.photos[0]?.cdnUrl} alt={data.id} />
@@ -48,7 +48,7 @@ const PostCard: React.FunctionComponent<IPostCardProps> = (props) => {
                 </div>
                 <div className='w-full text-sm'>{likesInfo.likes} likes</div>
                 <div className='w-full text-sm'>
-                    <span>Guest User</span>: {data.caption}
+                    <span>{data.username}</span>: {data.caption}
                 </div>
             </CardFooter>
         </CardHeader>

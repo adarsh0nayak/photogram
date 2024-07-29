@@ -13,6 +13,8 @@ let initialData: DocumentResponse[] = [{
   likes: 0,
   photos: [],
   userId: '',
+  username: '',
+  photoUrl: '',
   userLikes: []
 }];
 
