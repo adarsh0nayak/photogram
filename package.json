@@ -16,6 +16,7 @@
     "@uploadcare/react-uploader": "^0.6.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "embla-carousel-react": "^8.1.8",
     "firebase": "^10.12.3",
     "lucide-react": "^0.403.0",
     "react": "^18.3.1",

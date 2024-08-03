@@ -6,6 +6,7 @@ import { HeartIcon, MessageCircle } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { useUserAuth } from '../../context/userAuthContext';
 import { updateLikesOnPost } from '../../repository/post.service';
+import CarouselPhotos from '../carousel';
 
 interface IPostCardProps {
     data: DocumentResponse
@@ -39,7 +40,7 @@ const PostCard: React.FunctionComponent<IPostCardProps> = (props) => {
                 <span>{data.username}</span>
             </CardTitle>
             <CardContent className='p-0'>
-                <img src={data?.photos[0]?.cdnUrl} alt={data.id} />
+                <CarouselPhotos photos={data.photos}/>
             </CardContent>
             <CardFooter className='flex flex-col p-3'>
                 <div className='flex justify-between w-full mb-3'>

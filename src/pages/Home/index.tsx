@@ -43,7 +43,7 @@ export const Home: React.FunctionComponent = () => {
     <div className="mb-5">
       <h2 className="mb-5">Feed</h2>
       <div className="w-full flex justify-center">
-        <div className="flex flex-col max-w-sm rounded-sm overflow-hidden">
+        <div className="flex flex-col max-w-sm rounded-sm">
           {data.map(item => <PostCard data={item} key={item.id}/>)}
         </div>
       </div>
